@@ -1,12 +1,12 @@
-package com.example.myapp.presentation.ui.adapters
+package com.example.myapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.myapp.databinding.MovieItemBinding
-import com.example.myapp.presentation.Movie
-import com.example.myapp.presentation.ui.viewholders.MovieVH
+import com.example.myapp.model.Movie
+import com.example.myapp.view.viewholders.MovieVH
 
 class MovieListAdapter(
     private val openMovieDetail: (Movie?) -> Unit

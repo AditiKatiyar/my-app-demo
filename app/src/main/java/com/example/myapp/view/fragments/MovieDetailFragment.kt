@@ -1,4 +1,4 @@
-package com.example.myapp.presentation.ui.fragments
+package com.example.myapp.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.myapp.databinding.FragmentMovieDetailBinding
 import com.example.myapp.loadImage
-import com.example.myapp.presentation.Movie
-import com.example.myapp.presentation.viewmodel.MovieViewModel
+import com.example.myapp.model.Movie
+import com.example.myapp.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch

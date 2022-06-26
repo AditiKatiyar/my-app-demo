@@ -1,9 +1,9 @@
-package com.example.myapp.presentation.ui.viewholders
+package com.example.myapp.view.viewholders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapp.databinding.MovieItemBinding
 import com.example.myapp.loadImage
-import com.example.myapp.presentation.Movie
+import com.example.myapp.model.Movie
 
 class MovieVH(private val binding: MovieItemBinding) : RecyclerView.ViewHolder(binding.root) {
 

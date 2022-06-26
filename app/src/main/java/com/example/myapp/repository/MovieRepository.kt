@@ -1,6 +1,6 @@
 package com.example.myapp.repository
 
-import com.example.myapp.presentation.Movie
+import com.example.myapp.model.Movie
 import kotlinx.coroutines.delay
 import javax.inject.Inject
 

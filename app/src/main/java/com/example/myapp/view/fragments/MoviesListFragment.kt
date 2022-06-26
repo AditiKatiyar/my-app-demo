@@ -1,4 +1,4 @@
-package com.example.myapp.presentation.ui.fragments
+package com.example.myapp.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,9 +12,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapp.R
 import com.example.myapp.databinding.FragmentMoviesListBinding
-import com.example.myapp.presentation.Movie
-import com.example.myapp.presentation.ui.adapters.MovieListAdapter
-import com.example.myapp.presentation.viewmodel.MovieViewModel
+import com.example.myapp.model.Movie
+import com.example.myapp.view.adapters.MovieListAdapter
+import com.example.myapp.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
