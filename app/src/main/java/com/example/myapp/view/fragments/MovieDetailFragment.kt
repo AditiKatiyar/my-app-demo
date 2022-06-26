@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.myapp.AppConstants.Companion.BASE_PATH
 import com.example.myapp.databinding.FragmentMovieDetailBinding
 import com.example.myapp.loadImage
 import com.example.myapp.model.Movie
@@ -52,7 +53,7 @@ class MovieDetailFragment : Fragment() {
     private fun setData(movie: Movie) {
         binding.apply {
             title.text = movie.title
-            image.loadImage(movie.imageUrl)
+            image.loadImage(BASE_PATH + movie.imageUrl)
             releaseDate.text = movie.releaseDate
             rating.text = movie.rating.toString()
             popularity.text = movie.popularity.toString()
