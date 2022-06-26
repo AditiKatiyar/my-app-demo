@@ -58,10 +58,15 @@ class MoviesListFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.moviesList.collect { movie ->
-                    movie?.let { movieListAdapter.submitList(it) }
+                    movie?.let { showData(it) }
                 }
             }
         }
+    }
+
+    private fun showData(it: List<Movie>) {
+        binding.progress.visibility = View.GONE
+        movieListAdapter.submitList(it)
     }
 
     private fun openMovieDetail(movie: Movie?) {
