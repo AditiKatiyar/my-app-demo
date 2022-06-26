@@ -6,13 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapp.R
 import com.example.myapp.databinding.FragmentMoviesListBinding
-import com.example.myapp.presentation.MovieViewData
+import com.example.myapp.presentation.Movie
 import com.example.myapp.presentation.ui.adapters.MovieListAdapter
-import com.example.myapp.presentation.viewmodel.MyViewModel
+import com.example.myapp.presentation.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MoviesListFragment : Fragment() {
@@ -21,7 +26,7 @@ class MoviesListFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var movieListAdapter: MovieListAdapter
 
-    private val viewModel: MyViewModel by activityViewModels()
+    private val viewModel: MovieViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,13 +40,8 @@ class MoviesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        /*viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.text.collect {
-                    binding.textLabel.text = it
-                }
-            }
-        }*/
+        observeMoviesList()
+        viewModel.loadMovies()
     }
 
     private fun initView() {
@@ -52,13 +52,19 @@ class MoviesListFragment : Fragment() {
             )
             adapter = movieListAdapter
         }
-        val x = listOf<MovieViewData>(
-            MovieViewData("bbb", "nnnnn", "12-2-2020", 3.4F, 45F)
-        )
-        movieListAdapter.submitList(x)
     }
 
-    private fun openMovieDetail(movie: MovieViewData?) {
+    private fun observeMoviesList() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.moviesList.collect { movie ->
+                    movie?.let { movieListAdapter.submitList(it) }
+                }
+            }
+        }
+    }
+
+    private fun openMovieDetail(movie: Movie?) {
         viewModel.setSelectedMovie(movie)
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frag_container, MovieDetailFragment()).addToBackStack("").commit()

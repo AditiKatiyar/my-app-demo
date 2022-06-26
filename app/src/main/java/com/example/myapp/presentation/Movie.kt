@@ -1,7 +1,7 @@
 package com.example.myapp.presentation
 
-data class MovieViewData(
-    val name: String,
+data class Movie(
+    val title: String,
     val overview: String,
     val releaseDate: String,
     val rating: Float,

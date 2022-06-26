@@ -1,24 +1,23 @@
 package com.example.myapp.presentation.ui.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.myapp.databinding.MovieItemBinding
-import com.example.myapp.presentation.MovieViewData
+import com.example.myapp.presentation.Movie
 import com.example.myapp.presentation.ui.viewholders.MovieVH
 
 class MovieListAdapter(
-    private val openMovieDetail: (MovieViewData?) -> Unit
-) : ListAdapter<MovieViewData, MovieVH>(diff) {
+    private val openMovieDetail: (Movie?) -> Unit
+) : ListAdapter<Movie, MovieVH>(diff) {
 
     companion object {
-        val diff = object : DiffUtil.ItemCallback<MovieViewData>() {
-            override fun areItemsTheSame(oldItem: MovieViewData, newItem: MovieViewData) =
+        val diff = object : DiffUtil.ItemCallback<Movie>() {
+            override fun areItemsTheSame(oldItem: Movie, newItem: Movie) =
                 false
 
-            override fun areContentsTheSame(oldItem: MovieViewData, newItem: MovieViewData) =
+            override fun areContentsTheSame(oldItem: Movie, newItem: Movie) =
                 false
         }
     }

@@ -11,8 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.myapp.databinding.FragmentMovieDetailBinding
 import com.example.myapp.loadImage
-import com.example.myapp.presentation.MovieViewData
-import com.example.myapp.presentation.viewmodel.MyViewModel
+import com.example.myapp.presentation.Movie
+import com.example.myapp.presentation.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -23,7 +23,7 @@ class MovieDetailFragment : Fragment() {
     private var _binding: FragmentMovieDetailBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MyViewModel by activityViewModels()
+    private val viewModel: MovieViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,8 +49,9 @@ class MovieDetailFragment : Fragment() {
         }
     }
 
-    private fun setData(movie: MovieViewData) {
+    private fun setData(movie: Movie) {
         binding.apply {
+            title.text = movie.title
             image.loadImage(movie.imageUrl)
             releaseDate.text = movie.releaseDate
             rating.text = movie.rating.toString()
