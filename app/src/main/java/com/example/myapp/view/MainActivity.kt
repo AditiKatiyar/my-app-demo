@@ -1,8 +1,9 @@
-package com.example.myapp
+package com.example.myapp.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
+import com.example.myapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

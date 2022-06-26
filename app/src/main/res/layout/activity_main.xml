@@ -8,4 +8,4 @@
     android:layout_height="match_parent"
     android:tag="frag_container"
     app:defaultNavHost="true"
-    tools:context=".MainActivity" />
+    tools:context=".view.MainActivity" />
